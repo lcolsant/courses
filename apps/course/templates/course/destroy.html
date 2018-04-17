@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <title>Delete a course</title>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'course/css/style.css' %}">
+</head>
+<body>
+    <h1>Are you sure you want to delete the following course?</h1>
+    <p>Name: {{course.name}}</p>
+    <p>Description: {{course.description}}</p>
+    <form action="/courses" method="GET" class="destroy_btn">
+        {% csrf_token %}
+    <input id="submit" type="submit" name="return" value="No">
+    </form>
+    <form action="/courses/delete/{{course.id}}" method="GET" class="destroy_btn">
+        {% csrf_token %}
+    <input id="submit" type="submit" name="destroy" value="remove">
+    </form>
+</body>
+</html>
